@@ -33,11 +33,12 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ["node_modules/element-ui/lib/theme-chalk/index.css"],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: "~/plugins/aws-amplify.js", mode: "client" }],
+  plugins: [{ src: "~/plugins/aws-amplify.js", mode: "client" },
+ "~/plugins/element-ui.js"],
   /*
    ** Nuxt.js dev-modules
    */

@@ -13,6 +13,9 @@
   "dependencies": {
     "aws-amplify": "^1.2.2",
     "aws-amplify-vue": "^0.3.2",
-    "nuxt": "^2.0.0"
+    "element-ui": "^2.13.0",
+    "nuxt": "^2.12.1",
+    "vue": "^2.6.11",
+    "vue-server-renderer": "^2.6.11"
   }
 }

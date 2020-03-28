@@ -1,24 +1,71 @@
 <template>
-  <div class="container">
-    <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter">
+<div class="main">
     <div v-if="!signedIn">
-      <amplify-authenticator />
-    </div>
+<navbar :signIn="signedIn"/>
+  <div class="container">
+<el-card class="box-card">
+  <div slot="header" class="clearfix">
+    <span>Connecting People With Clinical Trials</span>
+  </div>
+    <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter">
+      <amplify-authenticator :authConfig="authConfig"/>
+</el-card>
+      </div>
+      </div>
     <div v-else>
       <amplify-sign-out/>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
 import { Auth } from 'aws-amplify'
 import { AmplifyEventBus } from 'aws-amplify-vue'
+import { elementui} from 'element-ui'
+import navbar from '~/components/navbar.vue'
+
 
 export default {
   data() {
     return {
-      signedIn: false
+      signedIn: false,
+      o: 5,
+      authConfig: {
+          signUpConfig: {
+            header: 'Sign up for Clinical Trials',
+            hideAllDefaults: true,
+            defaultCountryCode: '1',
+            signUpFields: [
+
+              {
+                label: 'Email',
+                key: 'email',
+                required: true,
+                displayOrder: 1,
+                type: 'string',
+                signUpWith: true
+              },
+              {
+                label: 'Password',
+                key: 'password',
+                required: true,
+                displayOrder: 2,
+                type: 'password'
+              },
+                              {
+                label: 'My user name',
+                key: 'username',
+                required: true,
+                displayOrder: 3,
+                type: 'string',
+              },
+            ]
+          }
+      }
     }
+  },
+  components:{
+    navbar
   },
   methods: {
     async findUser() {
@@ -60,4 +107,27 @@ export default {
   margin-bottom: 30px;
   max-width: 400px;
 }
+  .text {
+    font-size: 14px;
+  }
+
+  .item {
+    margin-bottom: 18px;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+  .clearfix:after {
+    clear: both
+  }
+
+  .box-card {
+    width: 90%;
+  }
+  .main {
+    background-color: #00bcd4;
+  }
 </style>
