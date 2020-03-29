@@ -15,7 +15,7 @@
   </el-submenu>
   <el-menu-item index="3">Support</el-menu-item>
 <el-menu-item index="4">Contact</el-menu-item>
-<el-menu-item index="5" style="float: right; padding-right: 3px 0">Sign Up</el-menu-item>
+<el-menu-item v-if="!signedIn" index="5" style="float: right; padding-right: 3px 0">Sign Up</el-menu-item>
 </el-menu>
 </template>
 

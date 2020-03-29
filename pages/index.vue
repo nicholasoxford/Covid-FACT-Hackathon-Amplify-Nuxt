@@ -1,14 +1,16 @@
 <template>
 <div class="main">
     <div v-if="!signedIn">
-<navbar :signIn="signedIn"/>
   <div class="container">
 <el-card class="box-card">
   <div slot="header" class="clearfix">
-    <span>Connecting People With Clinical Trials</span>
+    <h1>Learn About How To Participate In COVID-19 Research In Your Area</h1>
   </div>
     <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter">
+  
+    <mainForm> </mainForm>
       <amplify-authenticator :authConfig="authConfig"/>
+      <nuxt class="main-app-nuxt"/>
 </el-card>
       </div>
       </div>
@@ -22,14 +24,14 @@
 import { Auth } from 'aws-amplify'
 import { AmplifyEventBus } from 'aws-amplify-vue'
 import { elementui} from 'element-ui'
-import navbar from '~/components/navbar.vue'
+import mainForm from '~/components/mainForm'
 
 
 export default {
   data() {
     return {
+
       signedIn: false,
-      o: 5,
       authConfig: {
           signUpConfig: {
             header: 'Sign up for Clinical Trials',
@@ -64,8 +66,8 @@ export default {
       }
     }
   },
-  components:{
-    navbar
+  components: {
+    mainForm
   },
   methods: {
     async findUser() {
@@ -126,8 +128,5 @@ export default {
 
   .box-card {
     width: 90%;
-  }
-  .main {
-    background-color: #00bcd4;
   }
 </style>
