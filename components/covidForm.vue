@@ -46,7 +46,8 @@
               <el-form-item label="What is your age? " prop="age">
         <el-input v-model="form1.age" size="medium" type="number"> </el-input>
   </el-form-item>
-              <el-form-item label="Have you been tested for COVID-19?" prop="testing">
+              <el-form-item label="Have you experienced COVID-19 symptoms at any time after December 1, 2019?
+" prop="testing">
         <el-select
           v-model="form1.testing"
           filterable
@@ -54,6 +55,36 @@
         >
 <el-option
             v-for="item in yes_no"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            style="display:block"
+          ></el-option>
+        </el-select>
+  </el-form-item>
+                <el-form-item label="Have you experienced COVID-19 symptoms in the past 14 days?" prop="days">
+        <el-select
+          v-model="form1.days"
+          filterable
+          placeholder="Yes / No"
+        >
+<el-option
+            v-for="item in yes_no"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            style="display:block"
+          ></el-option>
+        </el-select>
+  </el-form-item>
+                  <el-form-item label="What is your COVID-19 testing status?" prop="days">
+        <el-select
+          v-model="form1.status"
+          filterable
+          placeholder="Yes / No"
+        >
+<el-option
+            v-for="item in status"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -91,14 +122,14 @@
           ></el-option>
         </el-select>
   </el-form-item>
-      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="stay">
+      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="hours">
         <el-select
           v-model="form1.stay"
           filterable
-          placeholder="Yes / No"
+          placeholder="Select"
         >
 <el-option
-            v-for="item in yes_no"
+            v-for="item in hours"
             :key="item.value"
             :label="item.label"
             :value="item.value"
@@ -260,7 +291,13 @@ data(){
         stay: [
             {   required: true, message: 'Please select how long you are going to stay', trigger: 'change' }
           ],
+                  hours: [
+            {   required: true, message: 'Please select how long you are going to stay', trigger: 'change' }
+          ],
         icu: [
+            {   required: true, message: 'Please select if you are in the ICU', trigger: 'change' }
+          ],
+                  days: [
             {   required: true, message: 'Please select if you are in the ICU', trigger: 'change' }
           ],
         heart: [
@@ -517,6 +554,26 @@ yes_no: [{
         label: "No",
         value: false
     }],
+status: [{
+    label: "I was tested and it was positive",
+    value: 1
+},
+    {
+        label: "I was tested and it was negative",
+        value: 2
+    },
+        {
+        label: "A physician or government telephone hotline recommended I be tested but I don’t have the results",
+        value: 2
+    }],
+    hours: [{
+    label: "Less than 72 Hours",
+    value: true
+},
+    {
+        label: "More than 72 Hours",
+        value: false
+    }],
 form1:
 {
 state: '',
@@ -531,6 +588,9 @@ ventilator: null,
 icu: null,
 heart: null,
 asthma: null,
+stay: null,
+status: null
+
 }
     }
 },

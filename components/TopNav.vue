@@ -7,7 +7,7 @@
     <el-menu-item index="2-2" @click="coming_soon">Clinical Trials</el-menu-item>
     <el-menu-item index="2-3" @click="coming_soon">Clinical  Trial Coordinator FAQ</el-menu-item>
     <el-submenu index="2-4">
-      <template slot="title" @click="coming_soon">Healty / Post-Virus</template>
+      <template slot="title" @click="coming_soon">Healthy / Post-Virus</template>
       <el-menu-item index="2-4-1" @click="coming_soon">Donate Plasmid</el-menu-item>
       <el-menu-item index="2-4-2" @click="coming_soon">Open Clinical Trials</el-menu-item>
       <el-menu-item index="2-4-3" @click="coming_soon">Other Choice</el-menu-item>
