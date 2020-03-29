@@ -1,9 +1,7 @@
 <template>
   <div>
     <TopNav :signedIn="signedIn" class="top-menu"></TopNav>
-    <el-card class="box-card">
-    <nuxt />
-    </el-card>
+    <nuxt class="top-menu" />
   </div>
 </template>
 <script>
@@ -62,7 +60,7 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-  .box-card {
-    width: 90%;
-  }
+.top-menu{
+  padding-top: 15px
+}
 </style>

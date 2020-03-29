@@ -5,11 +5,10 @@
 <el-card class="box-card">
   <div slot="header" class="clearfix">
     <h1>Learn About How To Participate In COVID-19 Research In Your Area</h1>
-  </div>
     <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter">
+  </div>
   
     <mainForm> </mainForm>
-      <amplify-authenticator :authConfig="authConfig"/>
       <nuxt class="main-app-nuxt"/>
 </el-card>
       </div>
@@ -100,7 +99,6 @@ export default {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
 }
