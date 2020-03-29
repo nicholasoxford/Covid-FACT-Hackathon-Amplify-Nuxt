@@ -12,6 +12,16 @@ export default {
   data() {
     return {
       signedIn: false,
+      title: "Corona FACT(Finding a Clinical Trial)"
+    }
+  },
+  head () {
+    return {
+      title: this.title,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: 'My custom description' }
+      ]
     }
   },
   components: {
@@ -61,6 +71,5 @@ html {
   margin: 0;
 }
 .top-menu{
-  padding-top: 15px
 }
 </style>

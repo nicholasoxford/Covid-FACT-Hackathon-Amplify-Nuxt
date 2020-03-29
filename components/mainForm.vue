@@ -1,16 +1,22 @@
 <template>
 <div class="madiv">
   <el-row  class="main" type="flex" justify="center" >
-  <el-col ><nuxt-link to="/info"><el-button type="success" round>I want to help clinical trials</el-button></nuxt-link><div class="grid-content bg-purple"></div></el-col>
+  <el-col ><nuxt-link to="/info"><el-button type="success"icon="el-icon-user" round>I am a volunteer</el-button></nuxt-link><div class="grid-content bg-purple"></div></el-col>
 </el-row>
   <el-row  class="main"  >
-  <el-col ><el-button type="success" round>I am Health Care professional </el-button><div class="grid-content bg-purple"></div></el-col>
+  <el-col ><el-button type="success" @click="coming_soon" icon="el-icon-office-building" round>I am healthcare professional </el-button><div class="grid-content bg-purple"></div></el-col>
 </el-row>
 </div>
 </template>
 
 <script>
 export default {
+  methods: {
+    coming_soon ()
+    {
+      alert('Coming Soon!')
+    }
+  }
 
 }
 </script>

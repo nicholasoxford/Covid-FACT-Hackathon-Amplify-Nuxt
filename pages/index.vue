@@ -1,21 +1,20 @@
 <template>
 <div class="main">
-    <div v-if="!signedIn">
   <div class="container">
 <el-card class="box-card">
   <div slot="header" class="clearfix">
-    <h1>Learn About How To Participate In COVID-19 Research In Your Area</h1>
     <img class="logo" src="../assets/logo.png" style="max-width: 200px" alt="Nuxt Amplify Auth Starter">
+    <h1>Click the link below to find out how you can help the COVID-19 pandemic</h1>
   </div>
   
     <mainForm> </mainForm>
       <nuxt class="main-app-nuxt"/>
 </el-card>
+<el-card class="box-card2">
+    <a href="https://www.cdc.gov/coronavirus/2019-nCoV/index.html"><img class="logo" src="../assets/cdc.png" style="max-width: 200px" alt="Nuxt Amplify Auth Starter"></a>
+    <h1>Click the photo above for CDC guidelines concerning the COVID-19 pandemic</h1>
+</el-card>
       </div>
-      </div>
-    <div v-else>
-      <amplify-sign-out/>
-    </div>
 </div>
 </template>
 
@@ -126,5 +125,9 @@ export default {
 
   .box-card {
     width: 90%;
+  }
+  .box-card2{
+    width: 90%;
+    margin-top: 15px
   }
 </style>
