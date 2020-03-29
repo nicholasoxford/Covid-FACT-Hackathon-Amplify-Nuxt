@@ -5,8 +5,8 @@
 <el-card class="box-card">
   <div slot="header" class="clearfix" v-if="header">
       
-    <h1>Submit Data To Be Considered For A Clinical Trial</h1>
     <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter" style="max-width: 200px" >
+    <h1>Corona F.A.C.T. Questionnaire: connecting you with a way to help</h1>
   </div>
   
     <covidForm
@@ -30,6 +30,8 @@ import covidForm from '~/components/covidForm'
 export default {
   data() {
     return {
+      title:"Corona FACT(Finding a Clinical Trial)",
+ 
       header: true,
       signedIn: false,
       authConfig: {
@@ -75,6 +77,7 @@ export default {
     mainForm,
     covidForm
   },
+  
   methods: {
     async findUser() {
       try {
@@ -98,6 +101,7 @@ export default {
     })
   }
 }
+
 </script>
 
 <style>
