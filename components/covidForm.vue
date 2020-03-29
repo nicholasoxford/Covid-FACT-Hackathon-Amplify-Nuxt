@@ -1,6 +1,6 @@
 <template>
 <div>
-  <el-form :model="form1" :rules="rules1" ref="form1"  class="ruleForm" label-position="top">
+  <el-form :model="form1" :rules="rules1" ref="form1"  class="ruleForm" label-position="top" align="center" >
 <el-form-item label="What State Did You Live In" prop="state">
             <el-select
           v-model="form1.state"
@@ -40,7 +40,7 @@
               <el-form-item label="How old are you?" prop="age">
         <el-input v-model="form1.age" size="medium" type="number"> </el-input>
   </el-form-item>
-              <el-form-item label="Have you been tested?" prop="test1">
+              <el-form-item label="Have you been tested?" prop="testing">
         <el-select
           v-model="form1.testing"
           filterable
@@ -70,9 +70,9 @@
       <el-option label="False" value="false"></el-option>
         </el-select>
   </el-form-item>
-      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="legnth-stay">
+      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="legnth_stay">
         <el-select
-          v-model="form1.length_stay"
+          v-model="form1.legnth_stay"
           filterable
           placeholder="True/False"
         >
@@ -92,7 +92,7 @@
   </el-form-item>
          <el-form-item label="Have you been admitted into the ICU for COVID-19 or COVID-19-like symptoms?" prop="icu">
         <el-select
-          v-model="form1.ventilator"
+          v-model="form1.icu"
           filterable
           placeholder="True/False"
         >
@@ -139,6 +139,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
 data(){
     return {
@@ -445,6 +447,8 @@ methods: {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('Validated!');
+            console.log(this.form1)
+            this.$store.commit('data/add', this.form1)
           } else {
             console.log('error submit!!');
             return false;
