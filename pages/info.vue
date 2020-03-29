@@ -7,9 +7,8 @@
     <h1>Submit Data To Be Considered For A Clinical Trial</h1>
     <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter">
   </div>
-  <div class="middle">
-    <covidForm class="covid"> </covidForm>
-    </div>
+  
+    <covidForm> </covidForm>
 </el-card>
       </div>
       </div>
@@ -103,9 +102,7 @@ export default {
   align-items: center;
   text-align: center;
 }
-.middle{
-  align-content: center;
-}
+
 .logo {
   margin-bottom: 30px;
   max-width: 400px;
@@ -129,11 +126,5 @@ export default {
 
   .box-card {
     width: 90%;
-     align-content: center;
-  }
-  .covid {
-    align-content: center;
-    text-align: center;
-    margin: auto
   }
 </style>
