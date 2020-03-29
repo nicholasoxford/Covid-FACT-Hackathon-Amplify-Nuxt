@@ -1,14 +1,16 @@
 <template>
 <div class="main">
     <div v-if="!signedIn">
-  <div class="container">
+  <div class="container" >
 <el-card class="box-card">
-  <div slot="header" class="clearfix">
+  <div slot="header" class="clearfix" v-if="header">
+      
     <h1>Submit Data To Be Considered For A Clinical Trial</h1>
-    <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter">
+    <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter" style="max-width: 200px" >
   </div>
   
-    <covidForm> </covidForm>
+    <covidForm
+    @change="header = false"> </covidForm>
 </el-card>
       </div>
       </div>
@@ -28,7 +30,7 @@ import covidForm from '~/components/covidForm'
 export default {
   data() {
     return {
-
+      header: true,
       signedIn: false,
       authConfig: {
           signUpConfig: {
@@ -63,6 +65,11 @@ export default {
           }
       }
     }
+  },
+  computed: {
+    bill (){
+      return this.$store.state.data.info
+    } 
   },
   components: {
     mainForm,

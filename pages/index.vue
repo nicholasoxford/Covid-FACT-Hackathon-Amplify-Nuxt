@@ -5,7 +5,7 @@
 <el-card class="box-card">
   <div slot="header" class="clearfix">
     <h1>Learn About How To Participate In COVID-19 Research In Your Area</h1>
-    <img class="logo" src="../assets/logo.png" alt="Nuxt Amplify Auth Starter">
+    <img class="logo" src="../assets/logo.png" style="max-width: 200px" alt="Nuxt Amplify Auth Starter">
   </div>
   
     <mainForm> </mainForm>

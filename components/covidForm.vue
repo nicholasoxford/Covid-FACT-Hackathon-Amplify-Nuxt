@@ -1,6 +1,7 @@
 <template>
 <div>
-  <el-form :model="form1" :rules="rules1" ref="form1"  class="ruleForm" label-position="top">
+    <div v-if="pageInfo">
+  <el-form  :model="form1" :rules="rules1" ref="form1"  class="ruleForm" label-position="top" align="center" >
 <el-form-item label="What State Did You Live In" prop="state">
             <el-select
           v-model="form1.state"
@@ -40,7 +41,7 @@
               <el-form-item label="How old are you?" prop="age">
         <el-input v-model="form1.age" size="medium" type="number"> </el-input>
   </el-form-item>
-              <el-form-item label="Have you been tested?" prop="test1">
+              <el-form-item label="Have you been tested?" prop="testing">
         <el-select
           v-model="form1.testing"
           filterable
@@ -70,9 +71,9 @@
       <el-option label="False" value="false"></el-option>
         </el-select>
   </el-form-item>
-      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="legnth-stay">
+      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="legnth_stay">
         <el-select
-          v-model="form1.length_stay"
+          v-model="form1.legnth_stay"
           filterable
           placeholder="True/False"
         >
@@ -92,7 +93,7 @@
   </el-form-item>
          <el-form-item label="Have you been admitted into the ICU for COVID-19 or COVID-19-like symptoms?" prop="icu">
         <el-select
-          v-model="form1.ventilator"
+          v-model="form1.icu"
           filterable
           placeholder="True/False"
         >
@@ -135,13 +136,46 @@
       <el-button @click="resetForm('form1')">Reset</el-button>
   </el-form-item>
   </el-form>
+  <el-dialog
+  title="How To Help Further. "
+  :visible.sync="centerDialogVisible"
+  width="30%"
+  :fullscreen="true"
+  center>
+  <span class="word">
+      Based on the information you have entered you may be eligible to help save lives through a plasma donation! Would you like to learn more?
+</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="leave">Donate Now!</el-button>
+    <el-button type="primary" @click="nextpage">Learn More</el-button>
+  </span>
+</el-dialog>
+    </div>
+<div v-if="!pageInfo">
+    <h1>WHAT DOES THIS MEAN?</h1>
+    <img class="logo" src="../assets/image.jpeg" alt="Nuxt Amplify Auth Starter" style="max-width: 200px" >
+    <span class="top-span">Because you tested positive for COVID-19 and have recovered, your body has seroconverted, which means that it has produced antibodies that can help fight against the virus.
+
+Your plasma contains those virus fighters! By donating some of your plasma, others can use your antibodies to help their bodies fight the COVID-19 virus and help them to become a COVID-19 survivor, just like you!
+</span>
+<h1>WHAT IS A PLASMA DONATION?</h1>
+    <span>
+A plasma donation is a blood donation in which your blood is drawn from one arm and filtered through a machine that keeps the plasma and returns the rest of your blood (red blood cells, white blood cells and platelets) in a saline solution to you through your other arm. 
+</span>
+<span>
+    For more information visit:<a href="https://ccpp19.org/index.html"> National COVID-19 Convalescent Plasma Project</a href>
+    </span>
+</div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
 data(){
     return {
+         centerDialogVisible: false,
         rules1: {
           state: [
             { required: true, message: 'Please input which state you live in', trigger: 'blur' },
@@ -155,7 +189,7 @@ data(){
         age: [
             { required: true, message: 'Please enter your age!', trigger: 'change' }
           ],
-        test1: [
+        testing: [
             {   required: true, message: 'Please select if you have been tested!', trigger: 'change' }
           ],
         fever: [
@@ -165,22 +199,22 @@ data(){
             {   required: true, message: 'Please select if you have been to the hospital!', trigger: 'change' }
           ],
         length_stay: [
-            {   required: true, message: 'Please select how loin', trigger: 'change' }
+            {   required: true, message: 'Please select how long you are going to stay', trigger: 'change' }
           ],
-                ventilator: [
-            {   required: true, message: 'Please select how loin', trigger: 'change' }
+        ventilator: [
+            {   required: true, message: 'Please select if you have a ventilator', trigger: 'change' }
           ],
-                  icu: [
-            {   required: true, message: 'Please select how loin', trigger: 'change' }
+        icu: [
+            {   required: true, message: 'Please select if you are in the ICUY', trigger: 'change' }
           ],
-                  heart: [
-            {   required: true, message: 'Please select how loin', trigger: 'change' }
+        heart: [
+            {   required: true, message: 'Please answer about your heart', trigger: 'change' }
           ],
-                            diabetes: [
-            {   required: true, message: 'Please select how loin', trigger: 'change' }
+        diabetes: [
+            {   required: true, message: 'Please answer about diabetes', trigger: 'change' }
           ],
                             asthma: [
-            {   required: true, message: 'Please select how loin', trigger: 'change' }
+            {   required: true, message: 'Please answer about asthma', trigger: 'change' }
           ],
         },
     states: [
@@ -421,6 +455,7 @@ data(){
         value: "WY"
     }
 ],
+pageInfo: true,
 form1:
 {
 state: '',
@@ -440,11 +475,19 @@ asthma: null,
     }
 },
 methods: {
+    leave(){
+        window.location.href = 'https://www.redcross.org/local/georgia.html'
+    },
+    nextpage(){
+        this.pageInfo = !this.pageInfo
+        this.centerDialogVisible = false
+        this.$emit('change')
+    },
       submitForm(formName) {
-          console.log(formName)
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('Validated!');
+            console.log(this.form1)
+           this.centerDialogVisible = true
           } else {
             console.log('error submit!!');
             return false;
@@ -453,7 +496,7 @@ methods: {
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-      }
+      },
     }
 }
 </script>
@@ -461,5 +504,12 @@ methods: {
 <style>
 .el-input{
     width: 120px
+}
+.word{
+    word-break: normal;
+    font-size: 18pt;
+}
+.top-span{
+    padding-top: 10px;
 }
 </style>
