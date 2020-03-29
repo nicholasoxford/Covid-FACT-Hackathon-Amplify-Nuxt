@@ -56,7 +56,7 @@ async function createApp (ssrContext) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"Corona FACT(Finding a Clinical Trial)","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Connecting people to therapeutic trials, vaccine trials, and serum donation based on their status."}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
+    head: {"title":"nuxt-amplify-auth-starter","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Nuxt Amplify Auth Starter is a starter template for adding Amplify Auth to a Nuxt single page web application."}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
 
     store,
     router,

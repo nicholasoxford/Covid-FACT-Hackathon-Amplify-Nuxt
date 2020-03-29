@@ -1,17 +1,21 @@
 {
-    "auth": {
-        "fact23c18cae": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false
-        }
-    },
-    "hosting": {
-        "amplifyhosting": {
-            "service": "amplifyhosting",
-            "providerPlugin": "awscloudformation",
-            "type": "manual"
-        }
-    }
+	"auth": {
+		"fact23c18cae": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	},
+	"hosting": {
+		"amplifyhosting": {
+			"service": "amplifyhosting",
+			"providerPlugin": "awscloudformation",
+			"type": "manual"
+		},
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation"
+		}
+	}
 }

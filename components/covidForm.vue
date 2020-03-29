@@ -71,9 +71,9 @@
       <el-option label="False" value="false"></el-option>
         </el-select>
   </el-form-item>
-      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="legnth_stay">
+      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="stay">
         <el-select
-          v-model="form1.legnth_stay"
+          v-model="form1.stay"
           filterable
           placeholder="True/False"
         >
@@ -151,20 +151,21 @@
   </span>
 </el-dialog>
     </div>
-<div v-if="!pageInfo">
+<div v-if="!pageInfo" class="last">
     <h1>WHAT DOES THIS MEAN?</h1>
-    <img class="logo" src="../assets/image.jpeg" alt="Nuxt Amplify Auth Starter" style="max-width: 200px" >
+
     <span class="top-span">Because you tested positive for COVID-19 and have recovered, your body has seroconverted, which means that it has produced antibodies that can help fight against the virus.
 
 Your plasma contains those virus fighters! By donating some of your plasma, others can use your antibodies to help their bodies fight the COVID-19 virus and help them to become a COVID-19 survivor, just like you!
 </span>
-<h1>WHAT IS A PLASMA DONATION?</h1>
-    <span>
+<h1 clas>WHAT IS A PLASMA DONATION?</h1>
+    <span style="padding-top: 15px">
 A plasma donation is a blood donation in which your blood is drawn from one arm and filtered through a machine that keeps the plasma and returns the rest of your blood (red blood cells, white blood cells and platelets) in a saline solution to you through your other arm. 
 </span>
 <span>
     For more information visit:<a href="https://ccpp19.org/index.html"> National COVID-19 Convalescent Plasma Project</a href>
     </span>
+     <amplify-authenticator class="login" />
 </div>
   </div>
 </template>
@@ -178,7 +179,7 @@ data(){
          centerDialogVisible: false,
         rules1: {
           state: [
-            { required: true, message: 'Please input which state you live in', trigger: 'blur' },
+            { required: true, message: 'Please input which state you live in', trigger: 'change' },
           ],
           gender: [
             { required: true, message: 'Please select a gendner', trigger: 'change' }
@@ -198,11 +199,11 @@ data(){
         hospital: [
             {   required: true, message: 'Please select if you have been to the hospital!', trigger: 'change' }
           ],
-        length_stay: [
-            {   required: true, message: 'Please select how long you are going to stay', trigger: 'change' }
-          ],
         ventilator: [
             {   required: true, message: 'Please select if you have a ventilator', trigger: 'change' }
+          ],
+        stay: [
+            {   required: true, message: 'Please select how long you are going to stay', trigger: 'change' }
           ],
         icu: [
             {   required: true, message: 'Please select if you are in the ICUY', trigger: 'change' }
@@ -465,7 +466,7 @@ age: null,
 testing: null,
 fever: null,
 hospital: null,
-length_stay: null,
+stay: null,
 ventilator: null,
 icu: null,
 heart: null,
@@ -502,6 +503,9 @@ methods: {
 </script>
 
 <style>
+.login{
+    width: 300px
+}
 .el-input{
     width: 120px
 }
@@ -511,5 +515,6 @@ methods: {
 }
 .top-span{
     padding-top: 10px;
+    margin-bottom: 15px
 }
 </style>
