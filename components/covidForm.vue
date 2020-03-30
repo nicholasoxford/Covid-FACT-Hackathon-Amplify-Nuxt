@@ -88,7 +88,7 @@
             :key="item.value"
             :label="item.label"
             :value="item.value"
-            style="display:block"
+            style="display:block; word-wrap:break-word"
           ></el-option>
         </el-select>
   </el-form-item>
@@ -122,7 +122,7 @@
           ></el-option>
         </el-select>
   </el-form-item>
-      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="hours">
+      <el-form-item label="How long have you been in the hospital for COVID-19 (hours)?" prop="stay">
         <el-select
           v-model="form1.stay"
           filterable
@@ -291,7 +291,7 @@ data(){
         stay: [
             {   required: true, message: 'Please select how long you are going to stay', trigger: 'change' }
           ],
-                  hours: [
+                  status: [
             {   required: true, message: 'Please select how long you are going to stay', trigger: 'change' }
           ],
         icu: [
@@ -560,10 +560,6 @@ status: [{
 },
     {
         label: "I was tested and it was negative",
-        value: 2
-    },
-        {
-        label: "A physician or government telephone hotline recommended I be tested but I don’t have the results",
         value: 2
     }],
     hours: [{
